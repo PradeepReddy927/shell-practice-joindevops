@@ -11,4 +11,4 @@ Fi
 
 # -gt ==> greater than
 # -lt ==> lesser than
-# -ne ===> Not equal to than
+# -ne ===> Not equal
