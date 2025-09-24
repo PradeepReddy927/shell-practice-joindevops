@@ -5,5 +5,5 @@
 
  echo "Script name:$0"
  echo "Current directory: $PWD"
- echo "Who us running this: $USER"
- echo "User home directory: $HOME" 
+ echo "Who is running this: $USER"
+ echo "Home directory for user: $HOME" 
