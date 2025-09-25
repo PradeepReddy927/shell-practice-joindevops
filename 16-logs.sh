@@ -37,7 +37,7 @@ else
 fi
 
 dnf list installed nginx &>>$LOG_FILE
-if [ $? -ne 0]; then
+if [ $? -ne 0 ]; then
     dnf install nginx -y &>>$LOG_FILE
     VALDATE $? "Ngnix"
 else
@@ -45,7 +45,7 @@ else
 fi
 
 dnf list installed python3 &>>$LOG_FILE 
-if [ $? -ne 0]; then
+if [ $? -ne 0 ] ; then
     dnf install python3 -y &>>$LOG_FILE
     VALDATE $? "python3"
 else
