@@ -10,14 +10,13 @@ LOGS_FOLDER= "var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
-
 mkdir -p $LOGS_FOLDER
-echo "Scripts started exectued at: $(date)"
+echo "Script started exectued at: $(date)"
 
-if [ $USERID -ne 0]
+if [ $USERID -ne 0 ]
 then
 echo "ERROR: Please run this scripts with root privileges"
-EXit 1 #Failure is other then 0
+exit 1 # failure is other than 0
 fi 
 
 VALIDATE(){ # functions receive inputs through args just like shell script args
@@ -28,7 +27,6 @@ VALIDATE(){ # functions receive inputs through args just like shell script args
  else
  echo -e "Installing $2 ... $G is Success $N"
  fi
-
 }
 
 dnf list installed mysql &>>$LOG_FILE
