@@ -32,7 +32,7 @@ VALIDATE(){ # functions receive inputs through args just like shell script args
 
 dnf list installed mysql &>>$LOG_FILE
 #Install if it is not found
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
 dnf install mysql -y  &>>$LOG_FILE
 VALIDATE $? "MYSQL"
