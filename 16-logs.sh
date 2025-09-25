@@ -6,10 +6,9 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-
 LOGS_FOLDER= "var/log/shell-script"
-SCRIPTS_NAME=$( echo $0 | cut -d "." -f1 )
-LOGS_FILE="$LOGS_FOLDER/$SCRIPTS_NAME.log"
+SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 
 mkdir -p $LOGS_FOLDER
@@ -32,30 +31,30 @@ VALIDATE(){ # functions receive inputs through args just like shell script args
 
 }
 
-dnf list installed mysql &>>$LOGS_FILE
+dnf list installed mysql &>>$LOG_FILE
 #Install if it is not found
 if [ $? -ne 0]
 then
-dnf install mysql -y  &>>$LOGS_FILE
+dnf install mysql -y  &>>$LOG_FILE
 VALIDATE $? "MYSQL"
 else
 echo -e "MYSQL already Exist ... $Y SKIPPING $N"
 fi
 
 
-dnf list instaleed nginx &>>$LOGS_FILE
+dnf list instaleed nginx &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
-dnf install nginx -y &>>$LOGS_FILE
+dnf install nginx -y &>>$LOG_FILE
 VALIDATE $? "nginx"
 else
 echo -e "nginx already Exist ... $Y SKIPPING $N"
 fi
 
-dnf list installed python3 &>>$LOGS_FILE
+dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
-dnf install python3 -y &>>$LOGS_FILE
+dnf install python3 -y &>>$LOG_FILE
 VALIDATE $? "python3"
 else
 echo -e "python3 already Exist ... $Y SKIPPING $N"
