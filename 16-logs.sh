@@ -6,12 +6,12 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-LOGS_FOLDER="var/log/shell-script"
+LOGS_FOLDER="var/log/shell-script/sh.log"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER
-echo "Script started exectued at: $(date)"
+echo "Script started exectued at: $(date)" &>>$LOG_FILE
 
 if [ $USERID -ne 0 ]
 then
@@ -34,7 +34,7 @@ dnf list installed mysql &>>$LOG_FILE
 #Install if it is not found
 if [ $? -ne 0 ]
 then
-dnf install mysql -y  &>>$LOG_FILE
+dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "MYSQL"
 else
 echo -e "MYSQL already Exist ... $Y SKIPPING $N"
@@ -58,4 +58,3 @@ VALIDATE $? "python3"
 else
 echo -e "python3 already Exist ... $Y SKIPPING $N"
 fi
-
