@@ -18,7 +18,7 @@ if [ $USERID -ne 0 ]; then
     exit 1 #failure is other than 0
 fi
 
-VALDATE(){ #functions receive inputs through args just like shell script args
+VALIDATE(){ #functions receive inputs through args just like shell script args
    if [ $1 -ne 0 ]; then
        echo -e "Installing $2 ... $R FAILURE $N" | tee -a $LOG_FILE
        exit 1
@@ -35,7 +35,7 @@ do
    # if exit code is 0, already installed -ne 0 need to install it
    if [ $? -ne 0 ]; then
        dnf install $package -y &>>$LOG_FILE
-       VALDATE $? "$Package"
+       VALIDATE $? "$Package"
     else
        echo -e "$Package already installed ... $Y SKIPPING $N"
     fi       
